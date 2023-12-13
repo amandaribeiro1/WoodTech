@@ -9,11 +9,11 @@ function autenticar(email, senha) {
     return database.executar(instrucao);
 }
 
-function exibirDados(dados, dtaHora, fkSensor){
-    var instrucao = `select dados, dtaHora, fkSensor from leituraUmidade join sensor on idSensor = fkSensor; `;
+// function exibirDados(dados, dtaHora, fkSensor){
+//     var instrucao = `select dados, dtaHora, fkSensor from leituraUmidade join sensor on idSensor = fkSensor; `;
 
-    return database.executar(instrucao);
-}
+//     return database.executar(instrucao);
+// }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrar(nomeEmpresa, email, senha, cnpj) {
