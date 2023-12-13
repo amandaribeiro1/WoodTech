@@ -7,53 +7,14 @@ body {
   background-color: black;
 }
 
-.container {
-  width: 80%;
-  margin: auto;
-  display: flex;
-}
-
-.header {
-  border-bottom: 3px solid #32b9cd;
-}
-
-.header .container {
-  justify-content: space-between;
-}
-
-.header a {
-  text-decoration: none;
-  color: #e3b062;
-}
-
-.agora {
-  font-weight: 800;
-}
-
-.navbar {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  color: #e3b062;
-}
-
-
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
-}
-
-
 /* BANNER */
 
 .banner {
-  height: fit-content;
+  height: 100%;
+  width: 100%;
   padding: 40px 0;
   color: white;
-  background-image: url(".././assets/imgs/bg-jelly-fish-para_outras_pags.png");
+  background-image: url("../assets/imgs/banner.jpg");
   background-size: cover;
 }
 
