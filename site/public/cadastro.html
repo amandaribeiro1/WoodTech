@@ -100,23 +100,122 @@
   function cadastrar() {
     aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
+    var cnpjVar = cnpj_input.value;
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = listaEmpresas.value
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      empresaVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else if (
+      nomeVar.indexOf(' ') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O nome não pode conter espaços! Insira apenas o primeiro nome.";
+
+      finalizarAguardar();
+      return false;
+
+    } else if (
+      nomeVar.indexOf('0') >= 0 ||
+      nomeVar.indexOf('1') >= 0 ||
+      nomeVar.indexOf('2') >= 0 ||
+      nomeVar.indexOf('3') >= 0 ||
+      nomeVar.indexOf('4') >= 0 ||
+      nomeVar.indexOf('5') >= 0 ||
+      nomeVar.indexOf('6') >= 0 ||
+      nomeVar.indexOf('7') >= 0 ||
+      nomeVar.indexOf('8') >= 0 ||
+      nomeVar.indexOf('"') >= 0 ||
+      nomeVar.indexOf("'") >= 0 ||
+      nomeVar.indexOf('!') >= 0 ||
+      nomeVar.indexOf('@') >= 0 ||
+      nomeVar.indexOf('#') >= 0 ||
+      nomeVar.indexOf('$') >= 0 ||
+      nomeVar.indexOf('%') >= 0 ||
+      nomeVar.indexOf('¨') >= 0 ||
+      nomeVar.indexOf('&') >= 0 ||
+      nomeVar.indexOf('*') >= 0 ||
+      nomeVar.indexOf('(') >= 0 ||
+      nomeVar.indexOf(')') >= 0 ||
+      nomeVar.indexOf('-') >= 0 ||
+      nomeVar.indexOf('_') >= 0 ||
+      nomeVar.indexOf('+') >= 0 ||
+      nomeVar.indexOf('=') >= 0 ||
+      nomeVar.indexOf('{') >= 0 ||
+      nomeVar.indexOf('}') >= 0 ||
+      nomeVar.indexOf('[') >= 0 ||
+      nomeVar.indexOf(']') >= 0 ||
+      nomeVar.indexOf('^') >= 0 ||
+      nomeVar.indexOf('~') >= 0 ||
+      nomeVar.indexOf('´') >= 0 ||
+      nomeVar.indexOf('`') >= 0 ||
+      nomeVar.indexOf('.') >= 0 ||
+      nomeVar.indexOf(',') >= 0 ||
+      nomeVar.indexOf('/') >= 0 ||
+      nomeVar.indexOf('?') >= 0 ||
+      nomeVar.indexOf('º') >= 0 ||
+      nomeVar.indexOf('ª') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O nome não pode conter números nem caracteres especiais";
+
+      finalizarAguardar();
+      return false;
+    } else if (
+      emailVar.indexOf(' ') >= 0 ||
+      emailVar.indexOf('#') >= 0 ||
+      emailVar.indexOf('$') >= 0 ||
+      emailVar.indexOf('%') >= 0 ||
+      emailVar.indexOf('¨') >= 0 ||
+      emailVar.indexOf('&') >= 0 ||
+      emailVar.indexOf('*') >= 0 ||
+      emailVar.indexOf('(') >= 0 ||
+      emailVar.indexOf(')') >= 0 ||
+      emailVar.indexOf('-') >= 0 ||
+      emailVar.indexOf('_') >= 0 ||
+      emailVar.indexOf('+') >= 0 ||
+      emailVar.indexOf('=') >= 0 ||
+      emailVar.indexOf('{') >= 0 ||
+      emailVar.indexOf('}') >= 0 ||
+      emailVar.indexOf('[') >= 0 ||
+      emailVar.indexOf(']') >= 0 ||
+      emailVar.indexOf('^') >= 0 ||
+      emailVar.indexOf('~') >= 0 ||
+      emailVar.indexOf('´') >= 0 ||
+      emailVar.indexOf('`') >= 0 ||
+      emailVar.indexOf('.') >= 0 ||
+      emailVar.indexOf(',') >= 0 ||
+      emailVar.indexOf('/') >= 0 ||
+      emailVar.indexOf('?') >= 0 ||
+      emailVar.indexOf('º') >= 0 ||
+      emailVar.indexOf('ª') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O Email não pode conter caracteres especiais nem espaços.";
+
+      finalizarAguardar();
+      return false;
+    } else if (
+      emailVar.indexOf('@') < 0 ||
+      emailVar.indexOf('.com') < 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Email inválido!";
 
       finalizarAguardar();
       return false;
@@ -136,7 +235,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        empresaServer: empresaVar
+        cnpjServer: cpjVar
       }),
     })
       .then(function (resposta) {
