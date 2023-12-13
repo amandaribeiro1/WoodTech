@@ -9,6 +9,12 @@ function autenticar(email, senha) {
     return database.executar(instrucao);
 }
 
+function exibirDados(dados, dtaHora, fkSensor){
+    var instrucao = `select dados, dtaHora, fkSensor from leituraUmidade join sensor on idSensor = fkSensor; `;
+
+    return database.executar(instrucao);
+}
+
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucao
 function cadastrar(nome, email, senha, empresaId) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
