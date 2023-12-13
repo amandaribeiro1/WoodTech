@@ -58,7 +58,7 @@
             <input id="cnpj_input" type="text" placeholder="72721254000100" />
           </div>
           <div class="campo">
-            <span>Nome:</span>
+            <span>Nome da empresa:</span>
             <input id="nome_input" type="text" placeholder="MoniTORATORA" />
           </div>
           <div class="campo">
@@ -124,8 +124,10 @@
       mensagem_erro.innerHTML =
         "O nome não pode conter espaços! Insira apenas o primeiro nome.";
 
-      finalizarAguardar();
-      return false;
+      setTimeout(() => {
+        finalizarAguardar();
+        return false;
+      }, 3000);
 
     } else if (
       nomeVar.indexOf('0') >= 0 ||
@@ -172,8 +174,10 @@
       mensagem_erro.innerHTML =
         "O nome não pode conter números nem caracteres especiais";
 
-      finalizarAguardar();
-      return false;
+      setTimeout(() => {
+        finalizarAguardar();
+        return false;
+      }, 3000);
     } else if (
       emailVar.indexOf(' ') >= 0 ||
       emailVar.indexOf('#') >= 0 ||
@@ -196,7 +200,6 @@
       emailVar.indexOf('~') >= 0 ||
       emailVar.indexOf('´') >= 0 ||
       emailVar.indexOf('`') >= 0 ||
-      emailVar.indexOf('.') >= 0 ||
       emailVar.indexOf(',') >= 0 ||
       emailVar.indexOf('/') >= 0 ||
       emailVar.indexOf('?') >= 0 ||
@@ -207,8 +210,10 @@
       mensagem_erro.innerHTML =
         "O Email não pode conter caracteres especiais nem espaços.";
 
-      finalizarAguardar();
-      return false;
+      setTimeout(() => {
+        finalizarAguardar();
+        return false;
+      }, 3000);
     } else if (
       emailVar.indexOf('@') < 0 ||
       emailVar.indexOf('.com') < 0
@@ -217,8 +222,95 @@
       mensagem_erro.innerHTML =
         "Email inválido!";
 
-      finalizarAguardar();
-      return false;
+      setTimeout(() => {
+        finalizarAguardar();
+        return false;
+      }, 3000);
+    } else if (
+      cnpjVar.indexOf(' ') >= 0 ||
+      cnpjVar.indexOf('#') >= 0 ||
+      cnpjVar.indexOf('$') >= 0 ||
+      cnpjVar.indexOf('%') >= 0 ||
+      cnpjVar.indexOf('¨') >= 0 ||
+      cnpjVar.indexOf('&') >= 0 ||
+      cnpjVar.indexOf('*') >= 0 ||
+      cnpjVar.indexOf('(') >= 0 ||
+      cnpjVar.indexOf(')') >= 0 ||
+      cnpjVar.indexOf('-') >= 0 ||
+      cnpjVar.indexOf('_') >= 0 ||
+      cnpjVar.indexOf('+') >= 0 ||
+      cnpjVar.indexOf('=') >= 0 ||
+      cnpjVar.indexOf('{') >= 0 ||
+      cnpjVar.indexOf('}') >= 0 ||
+      cnpjVar.indexOf('[') >= 0 ||
+      cnpjVar.indexOf(']') >= 0 ||
+      cnpjVar.indexOf('^') >= 0 ||
+      cnpjVar.indexOf('~') >= 0 ||
+      cnpjVar.indexOf('´') >= 0 ||
+      cnpjVar.indexOf('`') >= 0 ||
+      cnpjVar.indexOf('.') >= 0 ||
+      cnpjVar.indexOf(',') >= 0 ||
+      cnpjVar.indexOf('/') >= 0 ||
+      cnpjVar.indexOf('?') >= 0 ||
+      cnpjVar.indexOf('º') >= 0 ||
+      cnpjVar.indexOf('ª') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O cnpj não pode conter espaços ou caracteres especiais!";
+
+      setTimeout(() => {
+        finalizarAguardar();
+        return false;
+      }, 3000);
+    } else if (
+      senhaVar.indexOf(' ') >= 0 ||
+      senhaVar.indexOf('#') >= 0 ||
+      senhaVar.indexOf('$') >= 0 ||
+      senhaVar.indexOf('%') >= 0 ||
+      senhaVar.indexOf('¨') >= 0 ||
+      senhaVar.indexOf('&') >= 0 ||
+      senhaVar.indexOf('*') >= 0 ||
+      senhaVar.indexOf('(') >= 0 ||
+      senhaVar.indexOf(')') >= 0 ||
+      senhaVar.indexOf('-') >= 0 ||
+      senhaVar.indexOf('_') >= 0 ||
+      senhaVar.indexOf('+') >= 0 ||
+      senhaVar.indexOf('=') >= 0 ||
+      senhaVar.indexOf('{') >= 0 ||
+      senhaVar.indexOf('}') >= 0 ||
+      senhaVar.indexOf('[') >= 0 ||
+      senhaVar.indexOf(']') >= 0 ||
+      senhaVar.indexOf('^') >= 0 ||
+      senhaVar.indexOf('~') >= 0 ||
+      senhaVar.indexOf('´') >= 0 ||
+      senhaVar.indexOf('`') >= 0 ||
+      senhaVar.indexOf('.') >= 0 ||
+      senhaVar.indexOf(',') >= 0 ||
+      senhaVar.indexOf('/') >= 0 ||
+      senhaVar.indexOf('?') >= 0 ||
+      senhaVar.indexOf('º') >= 0 ||
+      senhaVar.indexOf('ª') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "A senha não pode conter espaços ou caracteres especiais!";
+
+      setTimeout(() => {
+        finalizarAguardar();
+        return false;
+      }, 3000);
+    } else if (
+      senhaVar != confirmacaoSenhaVar
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "As senhas devem ser iguais !";
+
+      setTimeout(() => {
+        finalizarAguardar();
+        return false;
+      }, 3000);
     } else {
       setInterval(sumirMensagem, 5000);
     }
@@ -235,7 +327,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        cnpjServer: cpjVar
+        cnpjServer: cnpjVar
       }),
     })
       .then(function (resposta) {

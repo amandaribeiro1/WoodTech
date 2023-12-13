@@ -35,6 +35,10 @@ body {
   color: #e3b062;
 }
 
+#icone{
+  width: 320px;
+}
+
 .agora {
   font-weight: 800;
 }
@@ -95,9 +99,12 @@ body {
 
 .box img {
   width: 170px;
+ 
 }
 
 .social .container .boxes {
+  padding-top: 25px;
+  padding-bottom: 30px;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -105,11 +112,20 @@ body {
 
 .box {
   width: 280px;
+  background-color: whitesmoke;
+  border-radius: 35px;
+  padding: 12px;
   height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 2px solid #240f03;
+  box-shadow:
+  0 8px  8px  rgba(0, 0, 0, 0.478), 
+  0 16px 16px rgba(64, 64, 64, 0.1), 
+  8px 32px 32px rgba(0, 0, 0, .15), 
+  8px 15px 15px rgba(255, 255, 255, 0.173);
 }
 
 .box p {
@@ -119,12 +135,13 @@ body {
 .footer {
   height: var(--tamanho-footer);
   width: 100%;
-  background-color: #32b9cd;
+  background-color: #240f03;
   color: #fff;
 }
 
 .footer h4 {
   margin: 0;
+  text-align: center;
 }
 
 .footer .container {
