@@ -156,6 +156,6 @@ body {
 
 .simulador .container {
   flex-direction: column;
-  overflow: scroll; 
+  width: 100%;
   height: var(--tamanho-simulador);
 }

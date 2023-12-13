@@ -124,10 +124,8 @@
       mensagem_erro.innerHTML =
         "O nome não pode conter espaços! Insira apenas o primeiro nome.";
 
-      setTimeout(() => {
-        finalizarAguardar();
+      finalizarAguardar();
         return false;
-      }, 3000);
 
     } else if (
       nomeVar.indexOf('0') >= 0 ||
@@ -174,10 +172,8 @@
       mensagem_erro.innerHTML =
         "O nome não pode conter números nem caracteres especiais";
 
-      setTimeout(() => {
-        finalizarAguardar();
+      finalizarAguardar();
         return false;
-      }, 3000);
     } else if (
       emailVar.indexOf(' ') >= 0 ||
       emailVar.indexOf('#') >= 0 ||
@@ -210,10 +206,8 @@
       mensagem_erro.innerHTML =
         "O Email não pode conter caracteres especiais nem espaços.";
 
-      setTimeout(() => {
-        finalizarAguardar();
+      finalizarAguardar();
         return false;
-      }, 3000);
     } else if (
       emailVar.indexOf('@') < 0 ||
       emailVar.indexOf('.com') < 0
@@ -222,10 +216,8 @@
       mensagem_erro.innerHTML =
         "Email inválido!";
 
-      setTimeout(() => {
-        finalizarAguardar();
+      finalizarAguardar();
         return false;
-      }, 3000);
     } else if (
       cnpjVar.indexOf(' ') >= 0 ||
       cnpjVar.indexOf('#') >= 0 ||
@@ -259,10 +251,8 @@
       mensagem_erro.innerHTML =
         "O cnpj não pode conter espaços ou caracteres especiais!";
 
-      setTimeout(() => {
-        finalizarAguardar();
+      finalizarAguardar();
         return false;
-      }, 3000);
     } else if (
       senhaVar.indexOf(' ') >= 0 ||
       senhaVar.indexOf('#') >= 0 ||
@@ -296,10 +286,8 @@
       mensagem_erro.innerHTML =
         "A senha não pode conter espaços ou caracteres especiais!";
 
-      setTimeout(() => {
-        finalizarAguardar();
+      finalizarAguardar();
         return false;
-      }, 3000);
     } else if (
       senhaVar != confirmacaoSenhaVar
     ) {
@@ -307,10 +295,8 @@
       mensagem_erro.innerHTML =
         "As senhas devem ser iguais !";
 
-      setTimeout(() => {
-        finalizarAguardar();
+      finalizarAguardar();
         return false;
-      }, 3000);
     } else {
       setInterval(sumirMensagem, 5000);
     }
