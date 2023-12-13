@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AquaTech | Cadastro</title>
+  <title>WoodTech | Cadastro</title>
 
   <script src="./js/sessao.js"></script>
 
@@ -19,11 +19,11 @@
     rel="stylesheet" />
 </head>
 
-<body onload="listar()">
+<body>
   <!--header inicio-->
   <div class="header">
     <div class="container">
-      <h1 class="titulo">AquaTech</h1>
+      <h1 class="titulo">WoodTech</h1>
       <ul class="navbar">
         <li>
           <a href="index.html">Inicial</a>
@@ -53,19 +53,13 @@
       <div class="card card-cadastro">
         <h2>Bem-vindo!</h2>
         <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
           <div class="campo">
-            <span>Empresa:</span>
-            <select name="empresas" id="listaEmpresas">
-              <option selected>Selecione uma empresa</option>
-            </select>
+            <span>CNPJ:</span>
+            <input id="cnpj_input" type="text" placeholder="72721254000100" />
           </div>
           <div class="campo">
             <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
+            <input id="nome_input" type="text" placeholder="MoniTORATORA" />
           </div>
           <div class="campo">
             <span>E-mail:</span>
