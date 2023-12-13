@@ -119,7 +119,7 @@
       finalizarAguardar();
       return false;
     } else if (
-      nomeVar.indexOf(' ') >= 0
+      nomeEmpresaVar.indexOf(' ') >= 0
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -129,45 +129,45 @@
         return false;
 
     } else if (
-      nomeVar.indexOf('0') >= 0 ||
-      nomeVar.indexOf('1') >= 0 ||
-      nomeVar.indexOf('2') >= 0 ||
-      nomeVar.indexOf('3') >= 0 ||
-      nomeVar.indexOf('4') >= 0 ||
-      nomeVar.indexOf('5') >= 0 ||
-      nomeVar.indexOf('6') >= 0 ||
-      nomeVar.indexOf('7') >= 0 ||
-      nomeVar.indexOf('8') >= 0 ||
-      nomeVar.indexOf('"') >= 0 ||
-      nomeVar.indexOf("'") >= 0 ||
-      nomeVar.indexOf('!') >= 0 ||
-      nomeVar.indexOf('@') >= 0 ||
-      nomeVar.indexOf('#') >= 0 ||
-      nomeVar.indexOf('$') >= 0 ||
-      nomeVar.indexOf('%') >= 0 ||
-      nomeVar.indexOf('¨') >= 0 ||
-      nomeVar.indexOf('&') >= 0 ||
-      nomeVar.indexOf('*') >= 0 ||
-      nomeVar.indexOf('(') >= 0 ||
-      nomeVar.indexOf(')') >= 0 ||
-      nomeVar.indexOf('-') >= 0 ||
-      nomeVar.indexOf('_') >= 0 ||
-      nomeVar.indexOf('+') >= 0 ||
-      nomeVar.indexOf('=') >= 0 ||
-      nomeVar.indexOf('{') >= 0 ||
-      nomeVar.indexOf('}') >= 0 ||
-      nomeVar.indexOf('[') >= 0 ||
-      nomeVar.indexOf(']') >= 0 ||
-      nomeVar.indexOf('^') >= 0 ||
-      nomeVar.indexOf('~') >= 0 ||
-      nomeVar.indexOf('´') >= 0 ||
-      nomeVar.indexOf('`') >= 0 ||
-      nomeVar.indexOf('.') >= 0 ||
-      nomeVar.indexOf(',') >= 0 ||
-      nomeVar.indexOf('/') >= 0 ||
-      nomeVar.indexOf('?') >= 0 ||
-      nomeVar.indexOf('º') >= 0 ||
-      nomeVar.indexOf('ª') >= 0
+      nomeEmpresaVar.indexOf('0') >= 0 ||
+      nomeEmpresaVar.indexOf('1') >= 0 ||
+      nomeEmpresaVar.indexOf('2') >= 0 ||
+      nomeEmpresaVar.indexOf('3') >= 0 ||
+      nomeEmpresaVar.indexOf('4') >= 0 ||
+      nomeEmpresaVar.indexOf('5') >= 0 ||
+      nomeEmpresaVar.indexOf('6') >= 0 ||
+      nomeEmpresaVar.indexOf('7') >= 0 ||
+      nomeEmpresaVar.indexOf('8') >= 0 ||
+      nomeEmpresaVar.indexOf('"') >= 0 ||
+      nomeEmpresaVar.indexOf("'") >= 0 ||
+      nomeEmpresaVar.indexOf('!') >= 0 ||
+      nomeEmpresaVar.indexOf('@') >= 0 ||
+      nomeEmpresaVar.indexOf('#') >= 0 ||
+      nomeEmpresaVar.indexOf('$') >= 0 ||
+      nomeEmpresaVar.indexOf('%') >= 0 ||
+      nomeEmpresaVar.indexOf('¨') >= 0 ||
+      nomeEmpresaVar.indexOf('&') >= 0 ||
+      nomeEmpresaVar.indexOf('*') >= 0 ||
+      nomeEmpresaVar.indexOf('(') >= 0 ||
+      nomeEmpresaVar.indexOf(')') >= 0 ||
+      nomeEmpresaVar.indexOf('-') >= 0 ||
+      nomeEmpresaVar.indexOf('_') >= 0 ||
+      nomeEmpresaVar.indexOf('+') >= 0 ||
+      nomeEmpresaVar.indexOf('=') >= 0 ||
+      nomeEmpresaVar.indexOf('{') >= 0 ||
+      nomeEmpresaVar.indexOf('}') >= 0 ||
+      nomeEmpresaVar.indexOf('[') >= 0 ||
+      nomeEmpresaVar.indexOf(']') >= 0 ||
+      nomeEmpresaVar.indexOf('^') >= 0 ||
+      nomeEmpresaVar.indexOf('~') >= 0 ||
+      nomeEmpresaVar.indexOf('´') >= 0 ||
+      nomeEmpresaVar.indexOf('`') >= 0 ||
+      nomeEmpresaVar.indexOf('.') >= 0 ||
+      nomeEmpresaVar.indexOf(',') >= 0 ||
+      nomeEmpresaVar.indexOf('/') >= 0 ||
+      nomeEmpresaVar.indexOf('?') >= 0 ||
+      nomeEmpresaVar.indexOf('º') >= 0 ||
+      nomeEmpresaVar.indexOf('ª') >= 0
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -308,7 +308,7 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        nomeEmpresaServer: nomeVar,
+        nomeEmpresaServer: nomeEmpresaVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
         cnpjServer: cnpjVar
