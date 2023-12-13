@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AquaTech | Cadastro</title>
+  <title>WoodTech | Cadastro</title>
 
   <script src="./js/sessao.js"></script>
 
@@ -19,11 +19,11 @@
     rel="stylesheet" />
 </head>
 
-<body onload="listar()">
+<body>
   <!--header inicio-->
   <div class="header">
     <div class="container">
-      <h1 class="titulo">AquaTech</h1>
+      <h1 class="titulo">WoodTech</h1>
       <ul class="navbar">
         <li>
           <a href="index.html">Inicial</a>
@@ -53,19 +53,13 @@
       <div class="card card-cadastro">
         <h2>Bem-vindo!</h2>
         <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
           <div class="campo">
-            <span>Empresa:</span>
-            <select name="empresas" id="listaEmpresas">
-              <option selected>Selecione uma empresa</option>
-            </select>
+            <span>CNPJ:</span>
+            <input id="cnpj_input" type="text" placeholder="72721254000100" />
           </div>
           <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
+            <span>Nome da empresa:</span>
+            <input id="nome_input" type="text" placeholder="MoniTORATORA" />
           </div>
           <div class="campo">
             <span>E-mail:</span>
@@ -106,23 +100,200 @@
   function cadastrar() {
     aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
+    var cnpjVar = cnpj_input.value;
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var empresaVar = listaEmpresas.value
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      empresaVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else if (
+      nomeVar.indexOf(' ') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O nome não pode conter espaços! Insira apenas o primeiro nome.";
+
+      finalizarAguardar();
+      return false;
+
+    } else if (
+      nomeVar.indexOf('0') >= 0 ||
+      nomeVar.indexOf('1') >= 0 ||
+      nomeVar.indexOf('2') >= 0 ||
+      nomeVar.indexOf('3') >= 0 ||
+      nomeVar.indexOf('4') >= 0 ||
+      nomeVar.indexOf('5') >= 0 ||
+      nomeVar.indexOf('6') >= 0 ||
+      nomeVar.indexOf('7') >= 0 ||
+      nomeVar.indexOf('8') >= 0 ||
+      nomeVar.indexOf('"') >= 0 ||
+      nomeVar.indexOf("'") >= 0 ||
+      nomeVar.indexOf('!') >= 0 ||
+      nomeVar.indexOf('@') >= 0 ||
+      nomeVar.indexOf('#') >= 0 ||
+      nomeVar.indexOf('$') >= 0 ||
+      nomeVar.indexOf('%') >= 0 ||
+      nomeVar.indexOf('¨') >= 0 ||
+      nomeVar.indexOf('&') >= 0 ||
+      nomeVar.indexOf('*') >= 0 ||
+      nomeVar.indexOf('(') >= 0 ||
+      nomeVar.indexOf(')') >= 0 ||
+      nomeVar.indexOf('-') >= 0 ||
+      nomeVar.indexOf('_') >= 0 ||
+      nomeVar.indexOf('+') >= 0 ||
+      nomeVar.indexOf('=') >= 0 ||
+      nomeVar.indexOf('{') >= 0 ||
+      nomeVar.indexOf('}') >= 0 ||
+      nomeVar.indexOf('[') >= 0 ||
+      nomeVar.indexOf(']') >= 0 ||
+      nomeVar.indexOf('^') >= 0 ||
+      nomeVar.indexOf('~') >= 0 ||
+      nomeVar.indexOf('´') >= 0 ||
+      nomeVar.indexOf('`') >= 0 ||
+      nomeVar.indexOf('.') >= 0 ||
+      nomeVar.indexOf(',') >= 0 ||
+      nomeVar.indexOf('/') >= 0 ||
+      nomeVar.indexOf('?') >= 0 ||
+      nomeVar.indexOf('º') >= 0 ||
+      nomeVar.indexOf('ª') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O nome não pode conter números nem caracteres especiais";
+
+      finalizarAguardar();
+      return false;
+    } else if (
+      emailVar.indexOf(' ') >= 0 ||
+      emailVar.indexOf('#') >= 0 ||
+      emailVar.indexOf('$') >= 0 ||
+      emailVar.indexOf('%') >= 0 ||
+      emailVar.indexOf('¨') >= 0 ||
+      emailVar.indexOf('&') >= 0 ||
+      emailVar.indexOf('*') >= 0 ||
+      emailVar.indexOf('(') >= 0 ||
+      emailVar.indexOf(')') >= 0 ||
+      emailVar.indexOf('-') >= 0 ||
+      emailVar.indexOf('_') >= 0 ||
+      emailVar.indexOf('+') >= 0 ||
+      emailVar.indexOf('=') >= 0 ||
+      emailVar.indexOf('{') >= 0 ||
+      emailVar.indexOf('}') >= 0 ||
+      emailVar.indexOf('[') >= 0 ||
+      emailVar.indexOf(']') >= 0 ||
+      emailVar.indexOf('^') >= 0 ||
+      emailVar.indexOf('~') >= 0 ||
+      emailVar.indexOf('´') >= 0 ||
+      emailVar.indexOf('`') >= 0 ||
+      emailVar.indexOf(',') >= 0 ||
+      emailVar.indexOf('/') >= 0 ||
+      emailVar.indexOf('?') >= 0 ||
+      emailVar.indexOf('º') >= 0 ||
+      emailVar.indexOf('ª') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O Email não pode conter caracteres especiais nem espaços.";
+
+      finalizarAguardar();
+      return false;
+    } else if (
+      emailVar.indexOf('@') < 0 ||
+      emailVar.indexOf('.com') < 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Email inválido!";
+
+      finalizarAguardar();
+      return false;
+    } else if (
+      cnpjVar.indexOf(' ') >= 0 ||
+      cnpjVar.indexOf('#') >= 0 ||
+      cnpjVar.indexOf('$') >= 0 ||
+      cnpjVar.indexOf('%') >= 0 ||
+      cnpjVar.indexOf('¨') >= 0 ||
+      cnpjVar.indexOf('&') >= 0 ||
+      cnpjVar.indexOf('*') >= 0 ||
+      cnpjVar.indexOf('(') >= 0 ||
+      cnpjVar.indexOf(')') >= 0 ||
+      cnpjVar.indexOf('-') >= 0 ||
+      cnpjVar.indexOf('_') >= 0 ||
+      cnpjVar.indexOf('+') >= 0 ||
+      cnpjVar.indexOf('=') >= 0 ||
+      cnpjVar.indexOf('{') >= 0 ||
+      cnpjVar.indexOf('}') >= 0 ||
+      cnpjVar.indexOf('[') >= 0 ||
+      cnpjVar.indexOf(']') >= 0 ||
+      cnpjVar.indexOf('^') >= 0 ||
+      cnpjVar.indexOf('~') >= 0 ||
+      cnpjVar.indexOf('´') >= 0 ||
+      cnpjVar.indexOf('`') >= 0 ||
+      cnpjVar.indexOf('.') >= 0 ||
+      cnpjVar.indexOf(',') >= 0 ||
+      cnpjVar.indexOf('/') >= 0 ||
+      cnpjVar.indexOf('?') >= 0 ||
+      cnpjVar.indexOf('º') >= 0 ||
+      cnpjVar.indexOf('ª') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O cnpj não pode conter espaços ou caracteres especiais!";
+
+      finalizarAguardar();
+      return false;
+    } else if (
+      senhaVar.indexOf(' ') >= 0 ||
+      senhaVar.indexOf('#') >= 0 ||
+      senhaVar.indexOf('$') >= 0 ||
+      senhaVar.indexOf('%') >= 0 ||
+      senhaVar.indexOf('¨') >= 0 ||
+      senhaVar.indexOf('&') >= 0 ||
+      senhaVar.indexOf('*') >= 0 ||
+      senhaVar.indexOf('(') >= 0 ||
+      senhaVar.indexOf(')') >= 0 ||
+      senhaVar.indexOf('-') >= 0 ||
+      senhaVar.indexOf('_') >= 0 ||
+      senhaVar.indexOf('+') >= 0 ||
+      senhaVar.indexOf('=') >= 0 ||
+      senhaVar.indexOf('{') >= 0 ||
+      senhaVar.indexOf('}') >= 0 ||
+      senhaVar.indexOf('[') >= 0 ||
+      senhaVar.indexOf(']') >= 0 ||
+      senhaVar.indexOf('^') >= 0 ||
+      senhaVar.indexOf('~') >= 0 ||
+      senhaVar.indexOf('´') >= 0 ||
+      senhaVar.indexOf('`') >= 0 ||
+      senhaVar.indexOf('.') >= 0 ||
+      senhaVar.indexOf(',') >= 0 ||
+      senhaVar.indexOf('/') >= 0 ||
+      senhaVar.indexOf('?') >= 0 ||
+      senhaVar.indexOf('º') >= 0 ||
+      senhaVar.indexOf('ª') >= 0
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "A senha não pode conter espaços ou caracteres especiais!";
+
+      finalizarAguardar();
+      return false;
+    } else if(
+      senhaVar != confirmacaoSenhaVar
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "As senhas devem ser iguais !";
 
       finalizarAguardar();
       return false;
@@ -142,7 +313,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        empresaServer: empresaVar
+        cnpjServer: cnpjVar
       }),
     })
       .then(function (resposta) {
