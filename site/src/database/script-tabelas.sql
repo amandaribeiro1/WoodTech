@@ -6,116 +6,105 @@
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
 
-CREATE DATABASE aquatech;
+create database woodtech;
+use woodtech;
 
-USE aquatech;
 
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14)
-);
 
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
+	nomeEmpresa VARCHAR(50),
 	email VARCHAR(50),
 	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+    cnpj char(14)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+insert into usuario values 
+(null,"Castilo","castilo@hotmail.com","castilo123","123458912345"),
+(null,"MaterialUse","material@hotmail.com","material123","12341234121234"),
+(null,"Nogueiras","nogueiras@hotmail.com","nogueira123","11123458123456");
+
+select * from usuario;
+
+create table Fabrica (
+  idFabrica int primary key auto_increment,
+  nomeResponsavel varchar(45),
+  endereco varchar(45),
+  fkUsuario int,
+  constraint fkUsuario foreign key (fkUsuario) references usuario (id)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+insert into Fabrica values
+(null,"Amanda","Rua haddock Lobo 595",1),
+(null,"Anna","Rua Augusta 1",2),
+(null, "Caique","Avenida Paulista 2",3);
+
+create table sensor (
+   idSensor int primary key auto_increment,
+   localizacao varchar(45),
+   fkFabrica int, 
+   constraint fkFabrica foreign key (fkFabrica) references Fabrica(idFabrica)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+create table leituraUmidade (
+	idLeituraUmidade INT PRIMARY KEY AUTO_INCREMENT,
+	dados DECIMAL,
+	dtaHora DATETIME,
+    fkSensor int,
+    constraint fkSensor foreign key (fkSensor) references sensor(idSensor)
 );
 
-insert into empresa (razao_social, cnpj) values ('Empresa 1', '00000000000000');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
 
-/*
-comando para sql server - banco remoto - ambiente de produção
-*/
+-- comando para sql server - banco remoto - ambiente de produção
 
-CREATE TABLE empresa (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	razao_social VARCHAR(50),
-	cnpj CHAR(14)
-);
+create database woodtech;
+use woodtech;
+
+
 
 CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nomeEmpresa VARCHAR(50),
 	email VARCHAR(50),
 	senha VARCHAR(50),
-	fk_empresa INT FOREIGN KEY REFERENCES empresa(id)
+    cnpj char(14)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
+create table Fabrica (
+  idFabrica int primary key auto_increment,
+  nomeResponsavel varchar(45),
+  endereco varchar(45),
+  fkUsuario int,
+  constraint fkUsuario foreign key (fkUsuario) references usuario (id)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY IDENTITY(1,1),
-	descricao VARCHAR(300),
-	fk_empresa INT FOREIGN KEY REFERENCES empresa(id)
+create table sensor (
+   idSensor int primary key auto_increment,
+   localizacao varchar(45),
+   fkFabrica int, 
+   constraint fkFabrica foreign key (fkFabrica) references Fabrica(idFabrica)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT FOREIGN KEY REFERENCES aquario(id)
+create table leituraUmidade (
+	idLeituraUmidade INT PRIMARY KEY AUTO_INCREMENT,
+	dados DECIMAL,
+	dtaHora DATETIME,
+    fkSensor int,
+    constraint fkSensor foreign key (fkSensor) references sensor(idSensor)
 );
 
-insert into empresa (razao_social, cnpj) values ('Empresa 1', '00000000000000');
 
 /*
 comandos para criar usuário em banco de dados azure, sqlserver,
 com permissão de insert + update + delete + select
 */
 
-CREATE USER [usuarioParaAPIWebDataViz_datawriter_datareader]
-WITH PASSWORD = '#Gf_senhaParaAPIWebDataViz',
-DEFAULT_SCHEMA = dbo;
+-- CREATE USER [usuarioParaAPIWebDataViz_datawriter_datareader]
+-- WITH PASSWORD = '#Gf_senhaParaAPIWebDataViz',
+-- DEFAULT_SCHEMA = dbo;
 
-EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+-- EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
+-- @membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
 
-EXEC sys.sp_addrolemember @rolename = N'db_datareader',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
+-- EXEC sys.sp_addrolemember @rolename = N'db_datareader',
+-- @membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
