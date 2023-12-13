@@ -65,7 +65,7 @@ create table leituraUmidade (
     constraint fkSensor foreign key (fkSensor) references sensor(idSensor)
 );
 
-insert into leituraUmidade values
+insert into leituraUmidade (idLeituraUmidade, dados, fkSensor) values
 (null,"100",1),
 (null,"98",1),
 (null,"98",1),
@@ -107,3 +107,5 @@ insert into leituraUmidade values
 (null,"90",3),
 (null,"88",3),
 (null,"85",3);
+
+select dados, dtaHora from leituraUmidade;
