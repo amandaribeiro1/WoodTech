@@ -161,7 +161,10 @@ body {
 }
 
 .simulador .container {
-  flex-direction: column;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: var(--tamanho-simulador);
 }

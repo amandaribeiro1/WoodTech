@@ -17,6 +17,11 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
+<style>
+    .simulador{
+        margin-left: 300px;
+    }
+</style>
 
 <body>
 
@@ -43,21 +48,23 @@
 
     <!-- simulador inicio -->
     <div class="simulador">
+        <h1>|Simulador financeiro</h1>
         <div class="container">
-            <h1>|Simulador financeiro</h1>
+           
             <div class="calculadora">
                 <div class="valores">
                     <div class="field">
                         <span>Toneladas de madeira armazenadas mensalmente:</span>
-                        <input id="email_input" type="text" placeholder="meuemail@provedor.com">
+                        <input id="toneladas_id" type="number" placeholder="1000">
                     </div>
                     <div class="field">
                         <span>Lucro mensal:</span>
-                        <input id="email_input" type="text" placeholder="meuemail@provedor.com">
+                        <input id="lucro_id" type="number" placeholder="500">
                     </div>
-                    <button>Calcular</button>
+                    <button onclick="calcular()">Calcular</button>
                 </div>
             </div>
+            <div id="exibirPerda"></div>
         </div>
     </div>
     <!-- simulador fim -->
@@ -75,3 +82,15 @@
 </body>
 
 </html>
+<script>
+   function calcular () {
+    var toneladas = Number(toneladas_id.value)
+    var lucro = Number(lucro_id.value)
+   
+
+    exibirPerda.innerHTML =
+    `
+    <p>Conforme informado, com a produção de ${toneladas} toneladas de madeira e com um lucro de R$:${lucro} por mês, com a nossa solução sua empresa deixaria de perder 13% de sua materia prima. e lucraria ${lucro + (lucro * 0.13)}</p>
+    `
+}
+</script>
